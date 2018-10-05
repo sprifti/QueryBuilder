@@ -45,32 +45,67 @@ foreach ($rules["rules"] as $key => $rule) {
 			if($rule["operator"] == "is_not_empty" ){
 				if(!empty($product[$rule["field"]])){
 					$i++;
+					$error = false;
+				}
+				else{
+					echo $rule["field"]." "."cannot be empty";
+					$error = true;
 				}
 			}
 
 			if( $rule["operator"] == "begins_with" ){
 				if( strpos($product[$rule["field"]], $rule["value"]) === 0   ){
 					$i++;
+					$error = false;
+				}
+				else{ 
+					if($error != true) {
+						echo $rule["field"]." "."should begin with"." ".$rule["value"];
+						$error = true;
+					}
 				}
 			}
 			if( $rule["operator"] == "equal" ){
 				if( $product[$rule["field"]] == $rule["value"] ){
 					$i++;
+					$error = false;
 				}
+				else{ 
+					if($error != true) {
+						echo $rule["field"]." "."should be equal to"." ".$rule["value"];
+						$error = true;
+					}
+				}
+				
 			}
 			if( $rule["operator"] == "less_or_equal" ){
 				if( $product[$rule["field"]] <= $rule["value"] ){
 					$i++;
+					$error = false;
+				}
+				else{ 
+					if($error != true) {
+						echo $rule["field"]." "."should be less than"." ".$rule["value"];
+						$error = true;
+					}
 				}
 			}
 			if( $rule["operator"] == "greater_or_equal" ){
 				if( $product[$rule["field"]] <= $rule["value"] ){
 					$i++;
+					$error = false;
+				}
+				else{ 
+					if($error != true) {
+						echo $rule["field"]." "."should be greater than"." ".$rule["value"];
+						$error = true;
+					}
 				}
 			}
 
 			if($i == count($rules["rules"])){
 				$product["status"] = $to["name"];
+				print_r($product);
 			}
 
 		}
@@ -79,34 +114,70 @@ else if( $rules["condition"] == "OR" ){
 		
 			//IS EMPTY OR IS NULL
 
-			if($rule["operator"] == "is_not_empty" ){
+		if($rule["operator"] == "is_not_empty" ){
 				if(!empty($product[$rule["field"]])){
 					$i++;
+					$error = false;
+				}
+				else{
+					echo $rule["field"]." "."cannot be empty";
+					$error = true;
 				}
 			}
 
 			else if( $rule["operator"] == "begins_with" ){
 				if( strpos($product[$rule["field"]], $rule["value"]) === 0   ){
 					$i++;
+					$error = false;
+				}
+				else{ 
+					if($error != true) {
+						echo $rule["field"]." "."should begin with"." ".$rule["value"];
+						$error = true;
+					}
 				}
 			}
 			else if( $rule["operator"] == "equal" ){
 				if( $product[$rule["field"]] == $rule["value"] ){
 					$i++;
+					$error = false;
 				}
+				else{ 
+					if($error != true) {
+						echo $rule["field"]." "."should be equal to"." ".$rule["value"];
+						$error = true;
+					}
+				}
+				
 			}
+
 			else if( $rule["operator"] == "less_or_equal" ){
 				if( $product[$rule["field"]] <= $rule["value"] ){
 					$i++;
+					$error = false;
+				}
+				else{ 
+					if($error != true) {
+						echo $rule["field"]." "."should be less than"." ".$rule["value"];
+						$error = true;
+					}
 				}
 			}
 			else if( $rule["operator"] == "greater_or_equal" ){
 				if( $product[$rule["field"]] <= $rule["value"] ){
 					$i++;
+					$error = false;
+				}
+				else{ 
+					if($error != true) {
+						echo $rule["field"]." "."should be greater than"." ".$rule["value"];
+						$error = true;
+					}
 				}
 			}
 			if($i <= count($rules["rules"]) && $i != 0){
 			$product["status"] = $to["name"];
+
 			}
 		}
 
@@ -116,7 +187,7 @@ else if( $rules["condition"] == "OR" ){
 	}
 	
 
-		print_r($product);
+		
 
 
 

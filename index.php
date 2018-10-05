@@ -17,14 +17,14 @@
 			 
 			<label>From</label>
 			<select name="from" id="from_col" style="width: 100px; height: 33px">
-            	<option value="1">Preactive</option>
+            	<option value="1">Pre-active</option>
             	<option value="2">Active</option>
             	<option value="3">Remove</option>
             </select>
 
             <label>To</label>
 			<select name="to" id="to_col" style="width: 100px; height: 33px">
-            	<option value="1">Preactive</option>
+            	<option value="1">Pre-active</option>
             	<option value="2">Active</option>
             	<option value="3">Remove</option>
             </select>

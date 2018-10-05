@@ -22,13 +22,13 @@
 				id: 1,
 				name: 'ER',
 				description: 'product description',
-				status: 'active',
-				category: '5'
+				status: 'Pre-active',
+				category: '3'
 			};
 
 
-			$.post('check.php',{product: product, current: 2, request: 3},function(d){
-				console.log(d);
+			$.post('check.php',{product: product, current: 1, request: 2},function(d){
+				alert(d);
 			});
 		}
 	</script>
